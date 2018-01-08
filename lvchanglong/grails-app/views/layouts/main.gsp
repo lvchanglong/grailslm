@@ -7,6 +7,9 @@
         <g:layoutTitle default="Main"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	<meta name="Keywords" content="grails联盟,Grails联盟,GRAILS联盟"/>
+	<meta name="Description" content="grails,grails教程,grails视频教程,网站开发,深思君"/>
 
     <asset:stylesheet src="application.css"/>
     <asset:stylesheet src="bootstrap-3.3.7/dist/css/bootstrap.css"/>
