@@ -43,7 +43,7 @@
                     </div>
                     <div class="fieldcontain">
                         <label for="grouping">Grouping</label>
-                        <g:textField name="grouping" value="" style="min-width:285px;"/>
+                        <g:textField name="grouping" value="grails" style="min-width:285px;"/>
                     </div>
                     <div class="fieldcontain">
                         <label for="face">Face

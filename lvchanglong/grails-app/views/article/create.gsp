@@ -36,7 +36,7 @@
                         </div>
                         <div class="fieldcontain">
                             <label for="content">Content</label>
-                            <g:textArea name="content" value="${render(template: "video")}" style="min-width:700px;min-height:300px;"/>
+                            <g:textArea name="content" value="${render(template: "video")}" style="min-width:1000px;min-height:300px;"/>
                         </div>
                         <div class="fieldcontain">
                             <label for="zindex">Zindex</label>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="fieldcontain">
                             <label for="grouping">Grouping</label>
-                            <g:textField name="grouping" value="" style="min-width:285px;"/>
+                            <g:textField name="grouping" value="grails" style="min-width:285px;"/>
                         </div>
                         <div class="fieldcontain">
                             <label for="face">Face

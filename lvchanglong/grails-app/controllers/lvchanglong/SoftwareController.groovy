@@ -4,24 +4,24 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = false)
-class ArticleController {
+class SoftwareController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Article.list(params), model:[articleCount: Article.count()]
+        respond Software.list(params), model:[softwareCount: Software.count()]
     }
 
-    def show(Article article) {
-        respond article
+    def show(Software software) {
+        respond software
     }
 
     def create() {
-        respond new Article(params)
+        respond new Software(params)
     }
 
     @Transactional
-    def save(Article article) {
-        if (article == null) {
+    def save(Software software) {
+        if (software == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
@@ -31,40 +31,40 @@ class ArticleController {
         if(!fData.empty) {
             def dataname = fData.getOriginalFilename() //文件名
             byte[] bytes = fData.getBytes() //二进制数据
-            article.properties = [dataname: dataname, data: new ArticleData([bytes: bytes])]
+            software.properties = [dataname: dataname, data: [bytes: bytes]]
         }
 
         def fFace = request.getFile("facefile")
         if(!fFace.empty) {
             def facename = fFace.getOriginalFilename() //文件名
             byte[] bytes = fFace.getBytes() //二进制数据
-            article.properties = [facename: facename, face: new ArticleFace([bytes: bytes])]
+            software.properties = [facename: facename, face: [bytes: bytes]]
         }
 
-        if (article.hasErrors()) {
+        if (software.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond article.errors, view:'create'
+            respond software.errors, view:'create'
             return
         }
 
-        article.save flush:true
+        software.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'article.label', default: 'Article'), article.id])
-                redirect article
+                flash.message = message(code: 'default.created.message', args: [message(code: 'software.label', default: 'Software'), software.id])
+                redirect software
             }
-            '*' { respond article, [status: CREATED] }
+            '*' { respond software, [status: CREATED] }
         }
     }
 
-    def edit(Article article) {
-        respond article
+    def edit(Software software) {
+        respond software
     }
 
     @Transactional
-    def update(Article article) {
-        if (article == null) {
+    def update(Software software) {
+        if (software == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
@@ -74,47 +74,47 @@ class ArticleController {
         if(!fData.empty) {
             def dataname = fData.getOriginalFilename() //文件名
             byte[] bytes = fData.getBytes() //二进制数据
-            article.properties = [dataname: dataname, data: [bytes: bytes]]
+            software.properties = [dataname: dataname, data: [bytes: bytes]]
         }
 
         def fFace = request.getFile("facefile")
         if(!fFace.empty) {
             def facename = fFace.getOriginalFilename() //文件名
             byte[] bytes = fFace.getBytes() //二进制数据
-            article.properties = [facename: facename, face: [bytes: bytes]]
+            software.properties = [facename: facename, face: [bytes: bytes]]
         }
 
-        if (article.hasErrors()) {
+        if (software.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond article.errors, view:'edit'
+            respond software.errors, view:'edit'
             return
         }
 
-        article.save flush:true
+        software.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'article.label', default: 'Article'), article.id])
-                redirect article
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'software.label', default: 'Software'), software.id])
+                redirect software
             }
-            '*'{ respond article, [status: OK] }
+            '*'{ respond software, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Article article) {
+    def delete(Software software) {
 
-        if (article == null) {
+        if (software == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        article.delete flush:true
+        software.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'article.label', default: 'Article'), article.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'software.label', default: 'Software'), software.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -124,7 +124,7 @@ class ArticleController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'article.label', default: 'Article'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'software.label', default: 'Software'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
@@ -133,38 +133,38 @@ class ArticleController {
 
     /**
      * 图片预览
-     * @param article
+     * @param software
      * @return
      */
-    def preview(Article article) {
+    def preview(Software software) {
         def out = response.getOutputStream()
-        if(article == null || article.face == null) {
-            def url = new URL(createLink(uri: "/", absolute: true) + assetPath(src: "web/article.png"))
+        if(software == null || software.face == null) {
+            def url = new URL(createLink(uri: "/", absolute: true) + assetPath(src: "web/software.jpg"))
             out.write(url.getBytes())
         } else {
-            out.write(article.face.bytes)
+            out.write(software.face.bytes)
         }
         out.flush()
         out.close()
     }
 
     /**
-     * 附件下载
-     * @param article
+     * 软件下载
+     * @param software
      * @return
      */
-    def download(Article article) {
-        if(!article.data) {
+    def download(Software software) {
+        if(!software.data) {
             render status: BAD_REQUEST, text: "无法下载"
             return
         }
         try {
-            def fileName = article.dataname
+            def fileName = software.dataname
             def fileType = FileHelper.getFileType(fileName)
             response.contentType = grailsApplication.config.grails.mime.types[fileType]
             response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(fileName, "UTF-8"))
             def out = response.getOutputStream()
-            out << article.data.bytes
+            out << software.data.bytes
             out.flush()
             out.close()
         } catch(Exception e) {

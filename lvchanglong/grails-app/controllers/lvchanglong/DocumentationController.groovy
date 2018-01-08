@@ -139,7 +139,7 @@ class DocumentationController {
     def preview(Documentation documentation) {
         def out = response.getOutputStream()
         if(documentation == null || documentation.face == null) {
-            def url = new URL(createLink(uri: "/", absolute: true) + assetPath(src: "birds/article1.jpg"))
+            def url = new URL(createLink(uri: "/", absolute: true) + assetPath(src: "web/documentation.png"))
             out.write(url.getBytes())
         } else {
             out.write(documentation.face.bytes)

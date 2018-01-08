@@ -66,14 +66,16 @@ grails:
             xml:
               - text/xml
               - application/xml
+            exe: application/x-msdos-program
+            zip: application/zip
     urlmapping:
         cache:
             maxsize: 1000
     controllers:
         defaultScope: singleton
         upload:
-          maxFileSize: 200000000
-          maxRequestSize: 200000000
+          maxFileSize: 700000000
+          maxRequestSize: 700000000
     converters:
         encoding: UTF-8
     views:

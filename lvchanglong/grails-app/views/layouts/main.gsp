@@ -10,7 +10,7 @@
 
     <asset:stylesheet src="application.css"/>
     <asset:stylesheet src="bootstrap-3.3.7/dist/css/bootstrap.css"/>
-    <asset:stylesheet src="carousel.css"/>
+    <asset:stylesheet src="dashboard.css"/>
     <link href="https://cdn.bootcss.com/messenger/1.5.0/css/messenger.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/messenger/1.5.0/css/messenger-theme-future.min.css" rel="stylesheet">
 
@@ -26,8 +26,8 @@
     <g:layoutHead/>
 </head>
 <body>
-    <g:render template="/layouts/header"/>
+    <g:render template="/layouts/headers/dashboard"/>
     <g:layoutBody/>
-    <g:render template="/layouts/footer"/>
+    <g:render template="/layouts/footers/dashboard"/>
 </body>
 </html>

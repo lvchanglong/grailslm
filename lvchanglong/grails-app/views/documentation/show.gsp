@@ -29,12 +29,12 @@
                     <div class="property-value" aria-labelledby="content-label">${documentation.content}</div>
                 </li>
                 <div class="fieldcontain">
-                    <label for="zindex">Zindex</label>
-                    <g:textField name="zindex" value="${documentation.zindex}" style="min-width:285px;"/>
+                    <span id="zindex-label" class="property-label">Zindex</span>
+                    <div class="property-value" aria-labelledby="zindex-label">${documentation.zindex}</div>
                 </div>
                 <div class="fieldcontain">
-                    <label for="grouping">Grouping</label>
-                    <g:textField name="grouping" value="${documentation.grouping}" style="min-width:285px;"/>
+                    <span id="grouping-label" class="property-label">Grouping</span>
+                    <div class="property-value" aria-labelledby="grouping-label">${documentation.grouping}</div>
                 </div>
                 <li class="fieldcontain">
                     <span id="face-label" class="property-label">Face</span>

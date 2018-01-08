@@ -10,3 +10,16 @@
 *= require mobile
 *= require_self
 */
+
+body {
+    font-family: "黑体", "Helvetica Neue", "宋体", Helvetica, Arial, sans-serif !important;
+}
+
+.group-header {
+    background-color: #255AA8;
+    color:#FFFFFF;
+    padding:10px;
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:10px;
+}
