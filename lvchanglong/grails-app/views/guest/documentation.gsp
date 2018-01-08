@@ -22,9 +22,15 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div style="padding:15px 0;">
-                                                <g:link controller="documentation" action="download" id="${documentation.id}" style="display:inline-block;font-weight:bold;margin-bottom:10px;font-size:20px;">
-                                                    ${documentation.title}
-                                                </g:link><br/>
+                                                <g:if test="${documentation.data}">
+                                                    <g:link controller="documentation" action="download" id="${documentation.id}" style="display:inline-block;font-weight:bold;margin-bottom:10px;font-size:20px;">
+                                                        ${documentation.title}
+                                                    </g:link>
+                                                </g:if>
+                                                <g:else>
+                                                    <span style="display:inline-block;font-weight:bold;margin-bottom:10px;font-size:20px;">${documentation.title}</span>
+                                                </g:else>
+                                                <br/>
                                                 <pre>${documentation.content}</pre>
                                                 <div style="margin-top:10px;">发布时间：<g:formatDate date="${documentation.dateCreated}" format="yyyy-MM-dd" /></div>
                                             </div>
