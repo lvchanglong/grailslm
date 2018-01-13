@@ -14,7 +14,7 @@
                         <div class="group-header">${group.getKey()?.toUpperCase()}</div>
                         <div class="row" style="margin-bottom:15px;">
                             <g:each in="${group.getValue()}" var="documentation">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
 
                                     <div class="row" style="margin-bottom:5px;">
                                         <div class="col-md-3">
