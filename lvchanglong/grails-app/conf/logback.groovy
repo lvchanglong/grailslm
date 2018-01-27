@@ -23,6 +23,7 @@ appender('STDOUT', ConsoleAppender) {
 }
 
 def targetDir = BuildSettings.TARGET_DIR
+
 if (Environment.isDevelopmentMode() && targetDir != null) {
     appender("FULL_STACKTRACE", FileAppender) {
         file = "${targetDir}/stacktrace.log"
