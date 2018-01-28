@@ -90,26 +90,7 @@ class User {
      * 列出当前用户所能拥有的全部功能（分组）
      */
     def listFunctionsToGroup() {
-        def array = this.listFunctions()
-        if(array) {
-            def groups = array.groupBy {elem->
-                elem.funGroup?.name
-            }
-            def linkedHashMap = new LinkedHashMap()
-            FunGroup.list().each {group->
-                def key = group.name //分組名称
-                def value = groups.get(key)
-                if(value) {
-                    linkedHashMap.put(key, value)
-                }
-            }
-            def value = groups.get(null)
-            if(value) {
-                linkedHashMap.put("其他", value)
-            }
-            return linkedHashMap
-        }
-        return null
+        return FunGroup.toGroup(this.listFunctions())
     }
 
     /**

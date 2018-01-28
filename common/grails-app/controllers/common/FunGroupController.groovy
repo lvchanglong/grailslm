@@ -4,25 +4,25 @@ import grails.converters.JSON
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-class SlideController {
+class FunGroupController {
 
-    SlideService slideService
+    FunGroupService funGroupService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond slideService.list(params), model:[slideCount: slideService.count()]
+        respond funGroupService.list(params), model:[funGroupCount: funGroupService.count()]
     }
 
     def show(Long id) {
-        respond slideService.get(id)
+        respond funGroupService.get(id)
     }
 
     def create() {
-        respond new Slide(params)
+        respond new FunGroup(params)
     }
 
-    def save(Slide slide) {
-        if (slide == null) {
+    def save(FunGroup funGroup) {
+        if (funGroup == null) {
             notFound()
             return
         }
@@ -30,14 +30,14 @@ class SlideController {
         try {
             def multipartFile = request.getFile("file")
             if(!multipartFile.empty) {
-                slide.properties = [filename:multipartFile.getOriginalFilename(), data:[bytes:multipartFile.getBytes()]]
+                funGroup.properties = [filename:multipartFile.getOriginalFilename(), data:[bytes:multipartFile.getBytes()]]
             }
         } catch (MissingMethodException e) {
 
         }
 
         try {
-            slideService.save(slide)
+            funGroupService.save(funGroup)
         } catch (ValidationException e) {
             render status: INTERNAL_SERVER_ERROR
             return
@@ -46,11 +46,11 @@ class SlideController {
     }
 
     def edit(Long id) {
-        respond slideService.get(id)
+        respond funGroupService.get(id)
     }
 
-    def update(Slide slide) {
-        if (slide == null) {
+    def update(FunGroup funGroup) {
+        if (funGroup == null) {
             notFound()
             return
         }
@@ -58,14 +58,19 @@ class SlideController {
         try {
             def multipartFile = request.getFile("file")
             if(!multipartFile.empty) {
-                slide.properties = [filename:multipartFile.getOriginalFilename(), data:[bytes:multipartFile.getBytes()]]
+                funGroup.properties = [filename:multipartFile.getOriginalFilename(), data:[bytes:multipartFile.getBytes()]]
             }
         } catch (MissingMethodException e) {
 
         }
 
+        if(!params.functions) {
+            funGroup.functions.clear()
+        }
+
         try {
-            slideService.save(slide)
+            funGroupService.save(funGroup)
+            println funGroup.errors
         } catch (ValidationException e) {
             render status: INTERNAL_SERVER_ERROR
             return
@@ -78,7 +83,7 @@ class SlideController {
             notFound()
             return
         }
-        slideService.delete(id)
+        funGroupService.delete(id)
         render status: NO_CONTENT
     }
 
@@ -96,7 +101,7 @@ class SlideController {
         def file = FileHelper.getFile(dirpath, filename)
 
         def array = new ArrayList()
-        Slide.list().each {
+        FunGroup.list().each {
             def cell = new HashMap()
             cell.put(0, it.id)
             cell.put(1, it.version)
@@ -122,7 +127,7 @@ class SlideController {
     /**
      * 图片预览
      */
-    def image(Slide instance) {
+    def image(FunGroup instance) {
         def out = response.getOutputStream()
         if(instance.data) {
             out.write(instance.data.bytes)
@@ -147,7 +152,7 @@ class SlideController {
         Calendar calendar = Calendar.getInstance()
         def nYear = calendar.get(Calendar.YEAR)
 
-        def instanceList = Slide.where {
+        def instanceList = FunGroup.where {
             year(dateCreated) == nYear
         }.list()
 

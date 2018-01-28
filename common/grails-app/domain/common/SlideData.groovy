@@ -13,7 +13,7 @@ class SlideData {
     Date lastUpdated //更新时间
 
     static mapping = {
-        table "base_slide_data"
+        table "base_slidedata"
         id column: "id"
         version column: "version"
 

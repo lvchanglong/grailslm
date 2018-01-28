@@ -13,7 +13,7 @@ class MimeFileData {
     Date lastUpdated //更新时间
 
     static mapping = {
-        table "base_mime_file_data"
+        table "base_mimefile_data"
         id column: "id"
         version column: "version"
 

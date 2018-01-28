@@ -5,7 +5,7 @@ package common
  */
 class Role {
 
-    SortedSet functions //解决多对多关系中，一方数据为空时，默认排序报错问题
+    SortedSet functions //解决“多对多”关系中，默认排序报错问题
     static hasMany = [functions:Function] //多对多关系
 
     String name //名称

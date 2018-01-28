@@ -5,7 +5,7 @@ package common
  */
 class Platform {
 
-    SortedSet functions //解决多对多关系中，一方数据为空时，默认排序报错问题
+    SortedSet functions //解决“多对多”关系中，默认排序报错问题
     static hasMany = [functions: Function] //多对多关系（一个平台对应多个功能，一个功能对应多个平台）
 
     String name //名称
@@ -81,22 +81,7 @@ class Platform {
      * 获取开启中平台的所有功能（分组）-“管理员”
      */
     static def listActivePlatformFunctionsToGroup() {
-        def groups = this.listActivePlatformFunctions().groupBy {elem->
-            elem.funGroup?.name
-        }
-        def linkedHashMap = new LinkedHashMap()
-        FunGroup.list().each {group->
-            def key = group.name //分組名称
-            def value = groups.get(key)
-            if(value) {
-                linkedHashMap.put(key, value)
-            }
-        }
-        def value = groups.get(null)
-        if(value) {
-            linkedHashMap.put("其他", value)
-        }
-        return linkedHashMap
+        return FunGroup.toGroup(this.listActivePlatformFunctions())
     }
 
 }

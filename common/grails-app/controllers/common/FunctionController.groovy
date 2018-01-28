@@ -9,8 +9,7 @@ class FunctionController {
     FunctionService functionService
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond functionService.list(params), model:[functionCount: functionService.count()]
+        respond functionService.list(), model:[functionCount: functionService.count()]
     }
 
     def show(Long id) {

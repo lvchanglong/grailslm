@@ -1,16 +1,16 @@
-<%@ page import="common.Function;" %>
+<%@ page import="common.Function; common.FunGroup;" %>
 
-<a href="#fakelink" data-toggle="modal" data-target="#editFunctionModal${instance.id}">
+<a href="#fakelink" data-toggle="modal" data-target="#editFunGroupModal${instance.id}">
     <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="修改"></span>
 </a>
 
-<div class="modal fade" id="editFunctionModal${instance.id}" tabindex="-1" role="dialog" aria-labelledby="editFunctionModal${instance.id}Title" aria-hidden="true">
+<div class="modal fade" id="editFunGroupModal${instance.id}" tabindex="-1" role="dialog" aria-labelledby="editFunGroupModal${instance.id}Title" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <g:form name="editFunctionForm${instance.id}" url="[controller:params.controller, action: 'update', id:instance.id]" class="form-horizontal ajaxForm">
+            <g:form name="editFunGroupForm${instance.id}" url="[controller:params.controller, action: 'update', id:instance.id]" class="form-horizontal ajaxForm">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title" id="editFunctionModal${instance.id}Title">信息修改</h3>
+                    <h3 class="modal-title" id="editFunGroupModal${instance.id}Title">信息修改</h3>
                 </div>
                 <div class="modal-body">
                     <fieldset class="modal-fieldset">
@@ -23,22 +23,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="controllerName" class="col-sm-2">控制器名称
-                                <span class="required-indicator">*</span>
-                            </label>
-                            <div class="col-sm-10">
-                                <g:textField name="controllerName" value="${instance.controllerName}" required="required" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="actionName" class="col-sm-2">方法名称
-                                <span class="required-indicator">*</span>
-                            </label>
-                            <div class="col-sm-10">
-                                <g:textField name="actionName" value="${instance.actionName}" required="required" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="zIndex" class="col-sm-2">迭代次序
                                 <span class="required-indicator">*</span>
                             </label>
@@ -47,11 +31,19 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="state" class="col-sm-2">状态
-                                <span class="required-indicator">*</span>
+                            <label for="functions" class="col-sm-2">功能列表
                             </label>
                             <div class="col-sm-10">
-                                <g:select from="${Function.constrainedProperties.state.inList}" name="state" value="${instance.state}" valueMessagePrefix="function.state" class="form-control"/>
+                                <div class="row">
+                                    <g:each in="${Function.list()}" status="i" var="fun">
+                                        <div class="col-sm-3 checkbox">
+                                            <label style="min-width:130px;">
+                                                <g:checkBox name="functions" value="${fun.id}" checked="${instance.functions.contains(fun)}"/>
+                                                ${fun}
+                                            </label>
+                                        </div>
+                                    </g:each>
+                                </div>
                             </div>
                         </div>
                     </fieldset>

@@ -13,7 +13,7 @@ class LoginLog {
     Date lastUpdated //更新时间
 
     static mapping = {
-        table "base_login_log"
+        table "base_loginlog"
         id column: "id"
         version column: "version"
 

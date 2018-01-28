@@ -14,7 +14,7 @@ class SearchLog {
     Date lastUpdated //更新时间
 
     static mapping = {
-        table "base_search_log"
+        table "base_searchlog"
         id column: "id"
         version column: "version"
 

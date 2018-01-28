@@ -1,4 +1,4 @@
-<%@ page import="common.User; common.Feedback;" %>
+<%@ page import="common.User; common.FunGroup;" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,20 +9,20 @@
     <body>
         <div class="container-fluid main-container">
             <h1 class="main-title" style="text-align: center">
-                用户反馈
+
             </h1>
             <g:if test="${!vip.onlyView(params)}">
-                <g:render template="create" model="[instance: new Feedback()]"/>
+                <g:render template="create" model="[instance: new FunGroup()]"/>
 
-                <a href="#fakelink" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#batchDeleteFeedbackModal">
+                <a href="#fakelink" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#batchDeleteFunGroupModal">
                     <span class="fui-cross-circle"></span>&nbsp;批量删除
                 </a>
-                <div class="modal fade" id="batchDeleteFeedbackModal" tabindex="-1" role="dialog" aria-labelledby="batchDeleteFeedbackModalTitle" aria-hidden="true">
+                <div class="modal fade" id="batchDeleteFunGroupModal" tabindex="-1" role="dialog" aria-labelledby="batchDeleteFunGroupModalTitle" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h3 class="modal-title" id="batchDeleteFeedbackModalTitle">是否删除？</h3>
+                                <h3 class="modal-title" id="batchDeleteFunGroupModalTitle">是否删除？</h3>
                             </div>
                             <div class="modal-body">
                                 &nbsp;删除后，<strong>不可恢复</strong>，请慎重操作
@@ -73,12 +73,6 @@
                 </div>
             </g:if>
 
-            <g:render template="export"/>
-
-            <g:link controller="${params.controller}" action="chart" target="_blank" class="btn btn-lg btn-info">
-                <span class="glyphicon glyphicon-hand-right"></span>&nbsp;图表展示
-            </g:link>
-
             <table class="table table-striped">
                 <tr>
                     <g:if test="${!vip.onlyView(params)}">
@@ -96,31 +90,29 @@
                         </th>
                     </g:if>
                     <th>序号</th>
-                    <th>账号</th>
-                    <th>内容</th>
-                    <th>类型</th>
-                    <th>ip</th>
+                    <th>名称</th>
+                    <th>迭代次序</th>
+                    <th>功能列表</th>
                     <g:sortableColumn property="dateCreated" title="创建时间"/>
                     <th>操作</th>
                 </tr>
-                <g:each in="${feedbackList}" status="i" var="feedback">
+                <g:each in="${funGroupList}" status="i" var="funGroup">
                     <tr>
                         <g:if test="${!vip.onlyView(params)}">
                             <td>
-                                <g:checkBox name="ids" value="${feedback.id}" checked="false"/>
+                                <g:checkBox name="ids" value="${funGroup.id}" checked="false"/>
                             </td>
                         </g:if>
                         <td>${offset.toInteger() + i + 1}</td>
-                        <td>${feedback.username}</td>
-                        <td>${feedback.content}</td>
-                        <td>${feedback.type}</td>
-                        <td>${feedback.ip}</td>
-                        <td><g:formatDate format="yyyy-MM-dd" date="${feedback.dateCreated}"/></td>
+                        <td>${funGroup.name}</td>
+                        <td>${funGroup.zIndex}</td>
+                        <td>${funGroup.functions}</td>
+                        <td><g:formatDate format="yyyy-MM-dd" date="${funGroup.dateCreated}"/></td>
                         <td>
                             <g:if test="${!vip.onlyView(params)}">
-                                <g:render template="edit" model="[instance:feedback]"/>
+                                <g:render template="edit" model="[instance:funGroup]"/>
                                 &nbsp;
-                                <g:render template="delete" model="[instance:feedback]"/>
+                                <g:render template="delete" model="[instance:funGroup]"/>
                             </g:if>
                             <g:else>
                                 <span class="fui-lock"></span>
@@ -132,7 +124,7 @@
 
             <div style="text-align: center;">
                 <div class="pagination">
-                    <g:paginate total="${feedbackCount ?: 0}" />
+                    <g:paginate total="${funGroupCount ?: 0}" />
                 </div>
             </div>
         </div>

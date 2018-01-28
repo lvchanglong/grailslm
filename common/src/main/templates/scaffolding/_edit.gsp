@@ -7,41 +7,64 @@ ${'<%'}@ page import="common.${className};" %>
 <div class="modal fade" id="edit${className}Modal\${instance.id}" tabindex="-1" role="dialog" aria-labelledby="edit${className}Modal\${instance.id}Title" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <g:form name="edit${className}Form\${instance.id}" url="[controller:params.controller, action: 'update', id:instance.id]" class="ajaxForm">
+            <g:form name="edit${className}Form\${instance.id}" url="[controller:params.controller, action: 'update', id:instance.id]" class="form-horizontal ajaxForm">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="edit${className}Modal\${instance.id}Title">信息修改</h4>
+                    <h3 class="modal-title" id="edit${className}Modal\${instance.id}Title">信息修改</h3>
                 </div>
                 <div class="modal-body">
-                    <fieldset class="form">
-                        <div class="fieldcontain required">
-                            <label for="title">Title
+                    <fieldset class="modal-fieldset">
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2">标题
                                 <span class="required-indicator">*</span>
                             </label>
-                            <g:textField name="title" value="\${instance.title}" required="required"/>
-                        </div>
-                        <div class="fieldcontain">
-                            <label for="content">Content</label>
-                            <g:textField name="content" value="\${instance.content}"/>
-                        </div>
-                        <div class="fieldcontain">
-                            <label for="state">State</label>
-                            <g:select from="\${${className}.constrainedProperties.state.inList}" name="state" value="\${instance.state}" valueMessagePrefix="${propertyName}.state"/>
-                        </div>
-                        <g:if test="\${instance.data}">
-                            <div class="fieldcontain">
-                                <label for="image">Image</label>
-                                <img id="image" src="\${createLink(controller:params.controller, action:'image', params:[id: instance.id])}" style="width:100px;height:100px;"/>
+                            <div class="col-sm-10">
+                                <g:textField name="title" value="\${instance.title}" required="required" class="form-control"/>
                             </div>
-                        </g:if>
-                        <div class="fieldcontain">
-                            <label for="file">Data</label>
-                            <input type="file" id="file" name="file" value="" style="padding: 10px 0;display:inline-block;"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="col-sm-2">内容
+                            </label>
+                            <div class="col-sm-10">
+                                <g:textField name="content" value="\${instance.content}" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="functions" class="col-sm-2">功能列表
+                            </label>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <g:each in="\${${className}.list()}" status="i" var="one">
+                                        <div class="col-sm-3 checkbox">
+                                            <label class="checkbox-label">
+                                                <g:checkBox name="functions" value="${one.id}" checked="\${instance.functions.contains(one)}"/>
+                                                ${one}
+                                            </label>
+                                        </div>
+                                    </g:each>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="state" class="col-sm-2">状态
+                                <span class="required-indicator">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <g:select from="\${${className}.constrainedProperties.state.inList}" name="state" value="\${instance.state}" valueMessagePrefix="${propertyName}.state" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file" class="col-sm-2">上传
+                                <span class="required-indicator">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="file" id="file" name="file" value="" class="form-control"/>
+                            </div>
                         </div>
                     </fieldset>
                 </div>
                 <div class="modal-footer">
-                    <g:submitButton name="submit" value="确定" class="btn btn-sm btn-primary"/>
+                    <g:submitButton name="submit" value="确定" class="btn btn-lg btn-primary"/>
                 </div>
             </g:form>
         </div>

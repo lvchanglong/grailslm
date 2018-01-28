@@ -7,7 +7,6 @@ class Function implements Comparable {
 
     static belongsTo = [Platform, Role] //新建平台时选功能，新建角色时选功能
     static hasMany = [platforms: Platform, roles: Role]
-    FunGroup funGroup //所属分组
 
     String name //名称
     String controllerName //控制器名称
@@ -32,7 +31,6 @@ class Function implements Comparable {
 
         platforms column: 'function_id', joinTable: 'base_platform_function_association'
         roles column: 'function_id', joinTable: 'base_role_function_association'
-        funGroup column:"function_group_id"
 
         sort zIndex: "asc"
     }
@@ -43,7 +41,6 @@ class Function implements Comparable {
         actionName(blank:false, nullable:false)
         zIndex(nullable:false)
         state(blank:false, nullable:false, inList: ["开启", "关闭"])
-        funGroup(nullable:true)
     }
 
     String toString() {
@@ -66,22 +63,7 @@ class Function implements Comparable {
      * 功能列表（分组）-“superman”
      */
     static def listToGroup() {
-        def groups = Function.list().groupBy {elem->
-            elem.funGroup?.name
-        }
-        def linkedHashMap = new LinkedHashMap()
-        FunGroup.list().each {group->
-            def key = group.name //分組名称
-            def value = groups.get(key)
-            if(value) {
-                linkedHashMap.put(key, value)
-            }
-        }
-        def value = groups.get(null)
-        if(value) {
-            linkedHashMap.put("其他", value)
-        }
-        return linkedHashMap
+        return FunGroup.toGroup(Function.list())
     }
 
 }

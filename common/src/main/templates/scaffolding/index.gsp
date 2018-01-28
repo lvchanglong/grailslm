@@ -22,7 +22,7 @@ ${'<%'}@ page import="common.User; common.${className};" %>
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="batchDelete${className}ModalTitle">是否删除？</h4>
+                                <h3 class="modal-title" id="batchDelete${className}ModalTitle">是否删除？</h3>
                             </div>
                             <div class="modal-body">
                                 &nbsp;删除后，<strong>不可恢复</strong>，请慎重操作
@@ -97,6 +97,7 @@ ${'<%'}@ page import="common.User; common.${className};" %>
                     </g:if>
                     <th>序号</th>
                     <th>名称</th>
+                    <th>图片预览</th>
                     <g:sortableColumn property="dateCreated" title="创建时间"/>
                     <th>操作</th>
                 </tr>
@@ -109,6 +110,7 @@ ${'<%'}@ page import="common.User; common.${className};" %>
                         </g:if>
                         <td>\${offset.toInteger() + i + 1}</td>
                         <td>\${${propertyName}.name}</td>
+                        <td><img id="image" src="\${createLink(controller:params.controller, action:'image', params:[id: ${propertyName}.id])}" style="width:30px;height:30px;"/></td>
                         <td><g:formatDate format="yyyy-MM-dd" date="\${${propertyName}.dateCreated}"/></td>
                         <td>
                             <g:render template="show" model="[instance:${propertyName}]"/>
