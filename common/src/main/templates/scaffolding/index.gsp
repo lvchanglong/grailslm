@@ -114,14 +114,14 @@ ${'<%'}@ page import="common.User; common.${className};" %>
                         <td><g:formatDate format="yyyy-MM-dd" date="\${${propertyName}.dateCreated}"/></td>
                         <td>
                             <g:render template="show" model="[instance:${propertyName}]"/>
-                        &nbsp;
+                            &nbsp;
                             <g:if test="\${!vip.onlyView(params)}">
                                 <g:render template="edit" model="[instance:${propertyName}]"/>
                                 &nbsp;
                                 <g:render template="delete" model="[instance:${propertyName}]"/>
                             </g:if>
                             <g:else>
-                                <span class="fui-lock"></span>
+                                <span class="glyphicon glyphicon-minus"></span>
                             </g:else>
                         </td>
                     </tr>

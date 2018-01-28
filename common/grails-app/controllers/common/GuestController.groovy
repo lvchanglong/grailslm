@@ -11,7 +11,6 @@ class GuestController {
 
     def index() {
 
-        render User.getConstrainedProperties()
     }
 
     /**
@@ -59,32 +58,4 @@ class GuestController {
         render status: CREATED, text: "注册成功"
     }
 
-    /**
-     * 图片显示
-     * @return
-     */
-//    def showSlice(String id) {
-//        if(id) {
-//            def slice = Slice.get(id)
-//            if(slice) {
-//                def sliceData = slice.data
-//                if(sliceData) {
-//                    ServletOutputStream out = response.getOutputStream()
-//                    out.write(sliceData.bytes)
-//                    out.flush()
-//                    out.close()
-//                }
-//            }
-//        } else {
-//            /**
-//             * http://localhost:8181/assets/home/1.jpg
-//             */
-//            def url = new URL(createLink(uri:'/', absolute:true) + assetPath(src:'home/111.png').replaceFirst("/", ""))
-//            byte[] bytes = url.getBytes()
-//            ServletOutputStream out = response.getOutputStream()
-//            out.write(bytes)
-//            out.flush()
-//            out.close()
-//        }
-//    }
 }

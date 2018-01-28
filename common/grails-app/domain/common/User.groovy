@@ -74,6 +74,20 @@ class User {
     }
 
     /**
+     * 禁止删除角色
+     */
+    def banDelete() {
+        return this.username in ["admin", "superman"]
+    }
+
+    /**
+     * 禁止修改角色
+     */
+    def banEdit() {
+        return this.username in ["admin", "superman"]
+    }
+
+    /**
      * 列出当前用户所能拥有的全部功能
      */
     def listFunctions() {

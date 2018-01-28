@@ -12,6 +12,7 @@
                 </div>
                 <div class="modal-body">
                     <g:textField name="password" value="" placeholder="密码" class="form-control" style="margin-bottom:5px;"/>
+                    <g:textField name="repassword" value="" placeholder="再次输入" class="form-control" style="margin-bottom:5px;"/>
                     <g:textField name="nickname" value="${vip.nickname}" placeholder="昵称" class="form-control"/>
                 </div>
                 <div class="modal-footer">

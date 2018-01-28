@@ -123,7 +123,7 @@
                                 <g:render template="delete" model="[instance:feedback]"/>
                             </g:if>
                             <g:else>
-                                <span class="fui-lock"></span>
+                                <span class="glyphicon glyphicon-minus"></span>
                             </g:else>
                         </td>
                     </tr>

@@ -7,6 +7,8 @@ class Platform {
 
     SortedSet functions //解决“多对多”关系中，默认排序报错问题
     static hasMany = [functions: Function] //多对多关系（一个平台对应多个功能，一个功能对应多个平台）
+    PlatformData data //图片数据
+    String filename//文件名称
 
     String name //名称
     String state = "关闭" //状态（开启|关闭），同一时间最多只能开启1个平台
@@ -27,6 +29,9 @@ class Platform {
         dateCreated column:"date_created"
         lastUpdated column:"last_updated"
 
+        data column:"data_id"
+        filename column:"filename"
+
         functions column: 'platform_id', joinTable: 'base_platform_function_association'
 
         sort id:"desc"
@@ -37,6 +42,8 @@ class Platform {
         state(blank:false, nullable:false, inList: ["关闭", "开启"])
         layout(blank:false, nullable:false, inList: ["main"])
         css(blank:false, nullable:false, inList: ["application.css"])
+        data(nullable:true)
+        filename(nullable:true)
     }
 
     String toString() {

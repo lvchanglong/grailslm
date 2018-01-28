@@ -5,7 +5,7 @@
 </a>
 
 <div class="modal fade" id="editSearchLogModal${instance.id}" tabindex="-1" role="dialog" aria-labelledby="editSearchLogModal${instance.id}Title" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <g:form name="editSearchLogForm${instance.id}" url="[controller:params.controller, action: 'update', id:instance.id]" class="form-horizontal ajaxForm">
                 <div class="modal-header">

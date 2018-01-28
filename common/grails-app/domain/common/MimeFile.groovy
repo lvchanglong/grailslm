@@ -7,14 +7,14 @@ class MimeFile {
 
     static hasMany = [children:MimeFile]
     static belongsTo = [parent:MimeFile]
+
     User creater//创建人
 
     MimeFileData data //文件数据
     String filename//文件名称
-    String md5//文件md5
 
     String type = "文件"//类型（文件|文件夹）
-    String classification = "公开" //锁类型（公开|私有）
+    String classification = "公开" //密级（公开|私有），公开时能够被检索到~
     Date dateCreated //创建时间
     Date lastUpdated //更新时间
 
@@ -24,7 +24,6 @@ class MimeFile {
         version column: "version"
 
         filename column:"filename"
-        md5 column:"md5"
         type column:"type"
         classification column:"classification"
         dateCreated column:"date_created"
@@ -37,12 +36,11 @@ class MimeFile {
 
     static constraints = {
         filename(blank:false, nullable:false)
-        md5(blank:false, nullable:false)
         type(blank:false, nullable:false, inList:["文件", "文件夹"])
         classification(blank:false, nullable:false, inList:["公开", "私有"])
         parent(nullable:true)
         creater(nullable:false)
-        data(nullable:false)
+        data(nullable:true)
     }
 
     String toString() {

@@ -135,6 +135,28 @@ class ${className}Controller {
     }
 
     /**
+     * 下载
+     */
+    def download(${className} instance) {
+        if(!instance.data) {
+            render status: BAD_REQUEST, text: "无法下载"
+            return
+        }
+        try {
+            def filename = instance.filename
+            def filetype = FileHelper.getFileType(filename)
+            response.contentType = grailsApplication.config.grails.mime.types[filetype]
+            response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(filename, "UTF-8"))
+            def out = response.getOutputStream()
+            out << instance.data.bytes
+            out.flush()
+            out.close()
+        } catch(Exception e) {
+
+        }
+    }
+
+    /**
      * 表格
      */
     def chart() {

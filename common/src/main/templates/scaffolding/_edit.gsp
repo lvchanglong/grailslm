@@ -5,7 +5,7 @@ ${'<%'}@ page import="common.${className};" %>
 </a>
 
 <div class="modal fade" id="edit${className}Modal\${instance.id}" tabindex="-1" role="dialog" aria-labelledby="edit${className}Modal\${instance.id}Title" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <g:form name="edit${className}Form\${instance.id}" url="[controller:params.controller, action: 'update', id:instance.id]" class="form-horizontal ajaxForm">
                 <div class="modal-header">
@@ -30,22 +30,6 @@ ${'<%'}@ page import="common.${className};" %>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="functions" class="col-sm-2">功能列表
-                            </label>
-                            <div class="col-sm-10">
-                                <div class="row">
-                                    <g:each in="\${${className}.list()}" status="i" var="one">
-                                        <div class="col-sm-3 checkbox">
-                                            <label class="checkbox-label">
-                                                <g:checkBox name="functions" value="${one.id}" checked="\${instance.functions.contains(one)}"/>
-                                                ${one}
-                                            </label>
-                                        </div>
-                                    </g:each>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="state" class="col-sm-2">状态
                                 <span class="required-indicator">*</span>
                             </label>
@@ -54,11 +38,34 @@ ${'<%'}@ page import="common.${className};" %>
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="image" class="col-sm-2">预览
+                            </label>
+                            <div class="col-sm-10">
+                                <img id="image" src="\${createLink(controller:params.controller, action:'image', params:[id:instance.id])}" style="width:100px;height:100px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="file" class="col-sm-2">上传
                                 <span class="required-indicator">*</span>
                             </label>
                             <div class="col-sm-10">
                                 <input type="file" id="file" name="file" value="" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="functions" class="col-sm-2">功能列表
+                            </label>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <g:each in="\${${className}.list()}" status="i" var="one">
+                                        <div class="col-sm-3 checkbox">
+                                            <label class="checkbox-label">
+                                                <g:checkBox name="functions" value="\${one.id}" checked="\${instance.functions.contains(one)}"/>
+                                                \${one}
+                                            </label>
+                                        </div>
+                                    </g:each>
+                                </div>
                             </div>
                         </div>
                     </fieldset>

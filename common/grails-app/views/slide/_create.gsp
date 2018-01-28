@@ -4,7 +4,7 @@
     <span class="fui-plus-circle"></span>&nbsp;信息添加
 </a>
 <div class="modal fade" id="createSlideModal" tabindex="-1" role="dialog" aria-labelledby="createSlideModalTitle" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <g:form name="createSlideForm" url="[controller:params.controller, action: 'save']" class="form-horizontal ajaxForm">
                 <div class="modal-header">

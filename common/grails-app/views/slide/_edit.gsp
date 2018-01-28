@@ -5,7 +5,7 @@
 </a>
 
 <div class="modal fade" id="editSlideModal${instance.id}" tabindex="-1" role="dialog" aria-labelledby="editSlideModal${instance.id}Title" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <g:form name="editSlideForm${instance.id}" url="[controller:params.controller, action: 'update', id:instance.id]" class="form-horizontal ajaxForm">
                 <div class="modal-header">
@@ -35,6 +35,13 @@
                             </label>
                             <div class="col-sm-10">
                                 <g:textField name="content" value="${instance.content}" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image" class="col-sm-2">预览
+                            </label>
+                            <div class="col-sm-10">
+                                <img id="image" src="${createLink(controller:params.controller, action:'image', params:[id: instance.id])}" style="width:100px;height:100px;"/>
                             </div>
                         </div>
                         <div class="form-group">

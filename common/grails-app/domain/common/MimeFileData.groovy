@@ -13,7 +13,7 @@ class MimeFileData {
     Date lastUpdated //更新时间
 
     static mapping = {
-        table "base_mimefile_data"
+        table "base_mimefiledata"
         id column: "id"
         version column: "version"
 
@@ -27,7 +27,7 @@ class MimeFileData {
 
     static constraints = {
         parent(nullable:false)
-        bytes(nullable:false, maxSize:1024 * 1024 * 200) //200M
+        bytes(nullable:false, maxSize:1024 * 1024 * 100) //100M
     }
 
 }

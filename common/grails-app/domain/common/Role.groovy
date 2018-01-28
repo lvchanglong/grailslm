@@ -69,7 +69,7 @@ class Role {
      * 禁止修改角色
      */
     def banEdit() {
-        return this.name in ["管理员", "普通用户"]
+        return this.name in ["管理员"]
     }
 
     /**
@@ -97,7 +97,7 @@ class Role {
      */
     boolean onlyView(def params) {
         if(this.permission && params.controller) {
-            return "只读".equalsIgnoreCase(this.permission.find("(?<=${params.controller.toLowerCase()}:).*?(?=;)")?.trim())
+            return "只读".equalsIgnoreCase(this.permission.find("(?<=${params.controller}:).*?(?=;)")?.trim())
         }
         return false
     }

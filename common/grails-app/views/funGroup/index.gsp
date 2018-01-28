@@ -9,7 +9,7 @@
     <body>
         <div class="container-fluid main-container">
             <h1 class="main-title" style="text-align: center">
-
+                功能分组管理
             </h1>
             <g:if test="${!vip.onlyView(params)}">
                 <g:render template="create" model="[instance: new FunGroup()]"/>
@@ -115,7 +115,7 @@
                                 <g:render template="delete" model="[instance:funGroup]"/>
                             </g:if>
                             <g:else>
-                                <span class="fui-lock"></span>
+                                <span class="glyphicon glyphicon-minus"></span>
                             </g:else>
                         </td>
                     </tr>

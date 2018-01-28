@@ -7,6 +7,9 @@
         <title><g:layoutTitle default="${application.platform.name}"/></title>
         <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 
+        <meta name="Keywords" content="grails联盟,Grails联盟,GRAILS联盟"/>
+        <meta name="Description" content="grails,grails教程,grails视频教程,网站开发,深思君"/>
+
         <asset:stylesheet src="${application.platform.css}"/>
 
         <!--[if lt IE 9]>

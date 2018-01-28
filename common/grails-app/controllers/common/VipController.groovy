@@ -26,7 +26,11 @@ class VipController {
     /**
      * 个人信息修改
      */
-    def regenerate(String password) {
+    def regenerate(String password, String repassword) {
+        if(password != repassword) {
+            render status: BAD_REQUEST, text: "密码不一致"
+            return
+        }
         try {
             def user = User.get(session.uid)
             if(password) {

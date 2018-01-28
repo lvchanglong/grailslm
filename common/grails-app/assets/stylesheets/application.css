@@ -59,9 +59,6 @@
 .dashboard-header a {
      font-weight:bold;
 }
-.container, .container-fluid {
-    min-width:1250px;
-}
 .ie7 .navbar-form, .ie8 .navbar-form {
     margin-top:9px;
 }
@@ -73,9 +70,6 @@
 }
 .ui-tooltip {
     font-size:12px;
-}
-.widthMax {
-    width:100% !important;
 }
 .ui-autocomplete {
     z-index:99999;

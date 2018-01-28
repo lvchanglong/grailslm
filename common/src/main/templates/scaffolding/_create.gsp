@@ -4,7 +4,7 @@ ${'<%'}@ page import="common.${className};" %>
     <span class="fui-plus-circle"></span>&nbsp;信息添加
 </a>
 <div class="modal fade" id="create${className}Modal" tabindex="-1" role="dialog" aria-labelledby="create${className}ModalTitle" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <g:form name="create${className}Form" url="[controller:params.controller, action: 'save']" class="form-horizontal ajaxForm">
                 <div class="modal-header">
@@ -29,22 +29,6 @@ ${'<%'}@ page import="common.${className};" %>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="functions" class="col-sm-2">功能列表
-                            </label>
-                            <div class="col-sm-10">
-                                <div class="row">
-                                    <g:each in="\${${className}.list()}" status="i" var="one">
-                                        <div class="col-sm-3 checkbox">
-                                            <label class="checkbox-label">
-                                                <g:checkBox name="functions" value="${one.id}" checked="false"/>
-                                                ${one}
-                                            </label>
-                                        </div>
-                                    </g:each>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="state" class="col-sm-2">状态
                                 <span class="required-indicator">*</span>
                             </label>
@@ -58,6 +42,22 @@ ${'<%'}@ page import="common.${className};" %>
                             </label>
                             <div class="col-sm-10">
                                 <input type="file" id="file" name="file" value="" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="functions" class="col-sm-2">功能列表
+                            </label>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <g:each in="\${${className}.list()}" status="i" var="one">
+                                        <div class="col-sm-3 checkbox">
+                                            <label class="checkbox-label">
+                                                <g:checkBox name="functions" value="\${one.id}" checked="false"/>
+                                                \${one}
+                                            </label>
+                                        </div>
+                                    </g:each>
+                                </div>
                             </div>
                         </div>
                     </fieldset>

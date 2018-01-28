@@ -45,7 +45,7 @@ class FunGroup {
      */
     static def toGroup(def funs) {
         def linkedHashMap = new LinkedHashMap()
-        def elseFunctions = funs.clone() //未分组功能
+        def elseFunctions = new ArrayList(funs) //未分组功能
         FunGroup.list().each {group->
             def key = group.name //分組名称
             def value = group.functions.intersect(funs) //交集
