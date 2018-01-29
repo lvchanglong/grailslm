@@ -1,7 +1,7 @@
 <%@ page import="common.LoginLog;" %>
 
 <a href="#fakelink" class="btn btn-lg btn-info" data-toggle="modal" data-target="#createLoginLogModal">
-    <span class="fui-plus-circle"></span>&nbsp;信息添加
+    <span class="glyphicon glyphicon-plus"></span>&nbsp;信息添加
 </a>
 <div class="modal fade" id="createLoginLogModal" tabindex="-1" role="dialog" aria-labelledby="createLoginLogModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg">

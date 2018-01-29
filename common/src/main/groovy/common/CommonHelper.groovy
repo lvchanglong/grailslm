@@ -11,6 +11,13 @@ class CommonHelper {
     }
 
     /**
+     * 是否是Linux操作系统
+     */
+    static boolean isLinux() {
+        return System.getProperty("os.name").equalsIgnoreCase("Linux")
+    }
+
+    /**
      * 年
      */
     static def getNian() {
@@ -78,7 +85,7 @@ class CommonHelper {
 
     static main(args) {
 //		println "随机获取：" + this.random(["H", "E", "L", "L", "O"])
-//		println "星期几：" + this.getXingQi()
+		println "星期几：" + this.getXingQi()
     }
 
 }

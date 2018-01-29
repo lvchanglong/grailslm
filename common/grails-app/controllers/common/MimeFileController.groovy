@@ -207,4 +207,49 @@ class MimeFileController {
 
         render new HashMap([labels:labels, datas:datas, maps:maps]) as JSON
     }
+
+    /**
+     * 获取目录树结构(生成jstree结构)
+     */
+    def listDirsForJsTree() {
+        def array = new ArrayList()
+        array.add(["id":"0", "parent":"#", text:"/", "state":["opened":true]])
+        MimeFile.findAllByType("文件夹").each { dir->
+            def hm = new HashMap()
+            hm.put("id", dir.id.toString())
+            hm.put("parent", dir.parent?dir.parent.id.toString():"0")
+            hm.put("text", dir.filename)
+            hm.put("state", ["opened":true])
+            array.add(hm)
+        }
+        render array as JSON
+    }
+
+    /**
+     * 移动文件
+     * @param id
+     * @param pid
+     */
+    def moveTo(String id, String pid) {
+        if(!id || pid == null || pid.isEmpty() || id.equalsIgnoreCase(pid)) {
+            render status: BAD_REQUEST, text: "暂不支持"
+            return
+        }
+
+        def instance = MimeFile.get(id)
+        if(pid.equalsIgnoreCase("0")) {
+            instance.parent = null
+        } else {
+            instance.parent = MimeFile.load(pid)
+        }
+
+        try {
+            mimeFileService.save(instance)
+        } catch (ValidationException e) {
+            render status: INTERNAL_SERVER_ERROR
+            return
+        }
+        render status: OK, text: "移动成功"
+    }
+
 }

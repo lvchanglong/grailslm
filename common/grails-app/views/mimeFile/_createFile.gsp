@@ -1,7 +1,7 @@
 <%@ page import="common.MimeFile;" %>
 
 <a href="#fakelink" class="btn btn-lg btn-info" data-toggle="modal" data-target="#createMimeFileModal">
-    <span class="fui-plus-circle"></span>&nbsp;上传文件
+    <span class="glyphicon glyphicon-upload"></span>&nbsp;上传文件
 </a>
 <div class="modal fade" id="createMimeFileModal" tabindex="-1" role="dialog" aria-labelledby="createMimeFileModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg">

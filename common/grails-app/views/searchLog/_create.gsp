@@ -1,7 +1,7 @@
 <%@ page import="common.SearchLog;" %>
 
 <a href="#fakelink" class="btn btn-lg btn-info" data-toggle="modal" data-target="#createSearchLogModal">
-    <span class="fui-plus-circle"></span>&nbsp;信息添加
+    <span class="glyphicon glyphicon-plus"></span>&nbsp;信息添加
 </a>
 <div class="modal fade" id="createSearchLogModal" tabindex="-1" role="dialog" aria-labelledby="createSearchLogModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg">

@@ -73,14 +73,26 @@ class MimeFile {
     /**
      * 当前文件或文件夹所在路径
      */
-    def getCurrentPath() {
-        String absolutePath = this.filename
+    def listParents() {
+        ArrayList array = new ArrayList()
+        array.add(this)
         def inst = this.parent
         while (inst) {
-            absolutePath = inst.filename + "/" + absolutePath
-            inst = inst.parent
+            array.add(inst)
+            inst = inst?.parent
         }
-        return "/${absolutePath}"
+        return array.reverse()
+    }
+
+    /**
+     * 当前文件或文件夹所在路径（字符串）
+     */
+    def listParentsToString() {
+        String absolutePath = "" //绝对路径
+        this.listParents().each {location->
+            absolutePath += "/${location.filename}"
+        }
+        return absolutePath
     }
 
 }

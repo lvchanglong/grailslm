@@ -15,7 +15,7 @@
                 <g:render template="create" model="[instance: new FunGroup()]"/>
 
                 <a href="#fakelink" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#batchDeleteFunGroupModal">
-                    <span class="fui-cross-circle"></span>&nbsp;批量删除
+                    <span class="glyphicon glyphicon-remove"></span>&nbsp;批量删除
                 </a>
                 <div class="modal fade" id="batchDeleteFunGroupModal" tabindex="-1" role="dialog" aria-labelledby="batchDeleteFunGroupModalTitle" aria-hidden="true">
                     <div class="modal-dialog">
@@ -29,7 +29,7 @@
                             </div>
                             <div class="modal-footer">
                                 <a href="javascript:void(0);" class="btn btn-lg btn-danger" id="batchDeleteMaster" data-url="${createLink(controller: params.controller, action: 'delete')}">
-                                    <span class="fui-cross-circle"></span>&nbsp;确认删除
+                                    <span class="glyphicon glyphicon-remove"></span>&nbsp;确认删除
                                 </a>
                                 <script>
                                     jQuery("#batchDeleteMaster").click(function () {

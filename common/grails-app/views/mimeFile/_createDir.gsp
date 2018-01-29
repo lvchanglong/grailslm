@@ -1,7 +1,7 @@
 <%@ page import="common.MimeFile;" %>
 
 <a href="#fakelink" class="btn btn-lg btn-info" data-toggle="modal" data-target="#createMimeDirModal">
-    <span class="fui-plus-circle"></span>&nbsp;新建文件夹
+    <span class="glyphicon glyphicon-plus"></span>&nbsp;创建文件夹
 </a>
 <div class="modal fade" id="createMimeDirModal" tabindex="-1" role="dialog" aria-labelledby="createMimeDirModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -9,7 +9,7 @@
             <g:form name="createMimeDirForm" url="[controller:params.controller, action: 'save']" class="form-horizontal ajaxForm">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title" id="createMimeDirModalTitle">新建文件夹</h3>
+                    <h3 class="modal-title" id="createMimeDirModalTitle">创建文件夹</h3>
                 </div>
                 <div class="modal-body">
                     <g:hiddenField name="parent" value="${parent?.id}"/>

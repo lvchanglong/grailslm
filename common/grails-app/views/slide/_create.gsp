@@ -1,7 +1,7 @@
 <%@ page import="common.Slide;" %>
 
 <a href="#fakelink" class="btn btn-lg btn-info" data-toggle="modal" data-target="#createSlideModal">
-    <span class="fui-plus-circle"></span>&nbsp;信息添加
+    <span class="glyphicon glyphicon-plus"></span>&nbsp;信息添加
 </a>
 <div class="modal fade" id="createSlideModal" tabindex="-1" role="dialog" aria-labelledby="createSlideModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg">

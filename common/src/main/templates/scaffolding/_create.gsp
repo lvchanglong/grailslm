@@ -1,7 +1,7 @@
 ${'<%'}@ page import="common.${className};" %>
 
 <a href="#fakelink" class="btn btn-lg btn-info" data-toggle="modal" data-target="#create${className}Modal">
-    <span class="fui-plus-circle"></span>&nbsp;信息添加
+    <span class="glyphicon glyphicon-plus"></span>&nbsp;信息添加
 </a>
 <div class="modal fade" id="create${className}Modal" tabindex="-1" role="dialog" aria-labelledby="create${className}ModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg">
