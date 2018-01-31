@@ -19,17 +19,17 @@ class AsposeLicense {
                     '</License>'
             def bytes = xml.getBytes()
 
-//            def wordsLiscense = new com.aspose.words.License()
-//            wordsLiscense.setLicense(new ByteArrayInputStream(bytes))
-//
-//            def cellsLiscense = new com.aspose.cells.License()
-//            cellsLiscense.setLicense(new ByteArrayInputStream(bytes))
-//
-//            def slidesLiscense = new com.aspose.slides.License()
-//            slidesLiscense.setLicense(new ByteArrayInputStream(bytes))
-//
-//            def pdfLiscense = new com.aspose.pdf.License()
-//            pdfLiscense.setLicense(new ByteArrayInputStream(bytes))
+            def wordsLiscense = new com.aspose.words.License()
+            wordsLiscense.setLicense(new ByteArrayInputStream(bytes))
+
+            def cellsLiscense = new com.aspose.cells.License()
+            cellsLiscense.setLicense(new ByteArrayInputStream(bytes))
+
+            def slidesLiscense = new com.aspose.slides.License()
+            slidesLiscense.setLicense(new ByteArrayInputStream(bytes))
+
+            def pdfLiscense = new com.aspose.pdf.License()
+            pdfLiscense.setLicense(new ByteArrayInputStream(bytes))
             return true
         } catch (Exception e) {
             e.printStackTrace()

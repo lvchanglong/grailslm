@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenLocal()
+		//maven { url "http://10.2.10.250:8081/nexus/content/groups/public/" }
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
@@ -26,8 +27,8 @@ apply plugin:"org.grails.grails-gsp"
 
 repositories {
     mavenLocal()
+	//maven { url "http://10.2.10.250:8081/nexus/content/groups/public/" }
     maven { url "https://repo.grails.org/grails/core" }
-    maven { url "http://10.2.10.250:8081/nexus/content/groups/public/" }
 }
 
 dependencies {
@@ -67,8 +68,10 @@ dependencies {
 
     runtime 'mysql:mysql-connector-java:5.1.29'
     compile "com.alibaba:druid:1.1.6"
+    compile "com.artofsolving:jodconverter:2.2.1"
     compile "org.apache.pdfbox:pdfbox:2.0.6"
     compile "org.apache.commons:commons-csv:1.4"
+    compile "org.apache.solr:solr-solrj:5.5.0"
 
     compile "org.apache.httpcomponents:httpclient:4.5.4"
     compile "org.apache.httpcomponents:httpmime:4.5.3"
@@ -78,6 +81,8 @@ dependencies {
     compile "org.apache.poi:poi-ooxml:3.15"
     compile "org.apache.poi:poi-scratchpad:3.15"
     compile "org.apache.poi:poi-ooxml-schemas:3.15"
+
+    compile fileTree(dir:"libs", include:"*.jar")
 }
 
 bootRun {

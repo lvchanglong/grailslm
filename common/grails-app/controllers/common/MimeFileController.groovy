@@ -105,7 +105,7 @@ class MimeFileController {
      * 批量导出
     */
     def exportData() {
-        def dirpath = servletContext.getRealPath("/") + "temp/"
+        def dirpath = servletContext.getRealPath("/") + "temp"
         def filetype = 'xls'
         def filename = new Date().format("yyyyMMddHHmmss") + "." + filetype
         def file = FileHelper.getFile(dirpath, filename)
@@ -250,6 +250,47 @@ class MimeFileController {
             return
         }
         render status: OK, text: "移动成功"
+    }
+
+    /**
+     * 文件预览
+     */
+    def preview(MimeFile instance) {
+        if (instance == null) {
+            render status: NOT_FOUND, text: "不存在"
+            return
+        }
+        if(instance.isDir() || !instance.data) {
+            render status: BAD_REQUEST, text: "不支持"
+            return
+        }
+
+        def realPath = servletContext.getRealPath("/")
+        def keyPath = "temp"
+        def dirpath = "${realPath}${keyPath}"
+
+        def serverFileType = FileHelper.getFileType(instance.filename).toLowerCase()
+        def bytes = instance.data.bytes
+        def serverFileName = "${bytes.encodeAsMD5()}.${serverFileType}" //服务器存储-文件名
+        def serverFile = FileHelper.getFile(dirpath, serverFileName)
+        if(!serverFile.exists()) { //不存在，则下载
+            serverFile.withOutputStream {os->
+                def is = new ByteArrayInputStream(bytes)
+                os << is
+                os.flush()
+            }
+        }
+
+        if(serverFileType.equalsIgnoreCase("pdf")) {
+            render(view: "preview${params.browser?:""}", model: [path: "/static/${keyPath}/${serverFileName}"])
+            return
+        }
+        def targetFile = FileHelper.getFile(dirpath, serverFileName + ".pdf")
+        if(FileConverter.convertTo(serverFile, targetFile)) {
+            render(view: "preview${params.browser?:""}", model: [path: "/static/${keyPath}/${targetFile.getName()}"])
+            return
+        }
+        redirect(uri:"/static/${keyPath}/${serverFileName}")
     }
 
 }

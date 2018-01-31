@@ -197,13 +197,20 @@
                                 <g:link action="index" params="[pid:mimeFile.id]">${mimeFile.filename}</g:link>
                             </g:if>
                             <g:else>
-                                <g:link action="download" id="${mimeFile.id}" target="_blank">${mimeFile.filename}</g:link>
+                                <g:link action="preview" id="${mimeFile.id}" target="_blank">${mimeFile.filename}</g:link>
                             </g:else>
                         </td>
                         <td>${mimeFile.type}</td>
                         <td>${mimeFile.classification}</td>
                         <td><g:formatDate format="yyyy-MM-dd" date="${mimeFile.dateCreated}"/></td>
                         <td>
+                            <g:if test="${mimeFile.isDir()}">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </g:if>
+                            <g:else>
+                                <g:link action="preview" id="${mimeFile.id}" params="[browser:'EX']" target="_blank"><span class="glyphicon glyphicon-fullscreen"></span></g:link>
+                            </g:else>
+                            &nbsp;
                             <g:if test="${!vip.onlyView(params)}">
                                 <g:render template="download" model="[instance:mimeFile]"/>
                                 &nbsp;

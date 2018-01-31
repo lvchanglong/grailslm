@@ -90,7 +90,7 @@ class SearchLogController {
      * 批量导出
     */
     def exportData() {
-        def dirpath = servletContext.getRealPath("/") + "temp/"
+        def dirpath = servletContext.getRealPath("/") + "temp"
         def filetype = 'xls'
         def filename = new Date().format("yyyyMMddHHmmss") + "." + filetype
         def file = FileHelper.getFile(dirpath, filename)

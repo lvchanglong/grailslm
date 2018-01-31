@@ -20,8 +20,12 @@
             <asset:javascript src="ie/json3.min.js"/>
             <asset:javascript src="ie/es6-shim-0.35.3/es6-shim.js"/>
             <asset:javascript src="ie/es6-shim-0.35.3/es6-sham.js"/>
+            <!--
             <asset:javascript src="ie/es7-shim-6.0.0/es7-shim.js"/>
+            <asset:javascript src="ie/backings/console-polyfill/index.js"/>
+            -->
         <![endif]-->
+
         <asset:javascript src="application.js"/>
 
         <g:layoutHead/>

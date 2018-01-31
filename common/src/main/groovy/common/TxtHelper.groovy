@@ -3,14 +3,9 @@ package common
 class TxtHelper {
 
 	/**
-	 * 获得原始内容(skip bom)
-	 * @param file
-	 * @return
-	 * @throws java.io.IOException
+	 * txt文档加载（read text file, auto recognize bom marker or use system default if markers not found.）
 	 */
 	private static char[] load(File file) throws IOException {
-		// read text file, auto recognize bom marker or use
-		// system default if markers not found.
 		BufferedReader reader = null;
 		CharArrayWriter writer = null;
 		UnicodeReader r = new UnicodeReader(file.newInputStream(), null);
@@ -39,19 +34,16 @@ class TxtHelper {
 	}
 
 	/**
-	 * 文件重写，增加bom(write UTF8 BOM mark)
-	 * @param f
-	 * @param data 原始内容
-	 * @throws java.io.IOException
+	 * txt文档重写（为txt文档增加UTF8 BOM mark）
 	 */
-	private static void rewrite(File f, char[] data) throws IOException {
+	private static void rewrite(File targetFile, char[] data) throws IOException {
 		BufferedWriter bw = null;
 		OutputStreamWriter osw = null;
 
-		def fos = f.newOutputStream();
+		def fos = targetFile.newOutputStream();
 		try {
 		    // write UTF8 BOM mark
-		    if (f.length() < 1) {
+		    if (targetFile.length() < 1) {
 				byte[] bom = new byte[3];
 				bom[0] = (byte)0xEF;
 				bom[1] = (byte)0xBB;
@@ -78,32 +70,26 @@ class TxtHelper {
 	}
 
 	/**
-	 * bom重置
-	 * @param file
-	 */
+	 * 统一txt文档格式编码UTF8
+     */
 	static void resetBom(File file) {
-		char[] chars = this.load(file)//原始内容
-		this.rewrite(file, chars)//文件重写（加入bom）
+		def chars = this.load(file) //txt文档加载
+		this.rewrite(file, chars) //为原始txt文档增加UTF8 BOM mark
 	}
 
 	/**
-	 * 按行获得文本内容(skip bom)
-	 * @param file
-	 * @return
-	 * @throws java.io.IOException
+	 * 按行获得文本内容
 	 */
 	static List<String> readLines(File file) throws IOException {
+		this.resetBom(file) //增加UTF8 BOM mark
 		UnicodeReader r = new UnicodeReader(file.newInputStream(), null);
 		BufferedReader reader = new BufferedReader(r);
 		return reader.readLines()
 	}
 
 	static main(args) {
-		def f = new File("E:/", "术语表.txt")
-
-//		println com.ge.analyse.assist.TxtHelper.load(f)
-
-		TxtHelper.resetBom(f)
+		def file = new File("E:/", "术语表.txt")
+		TxtHelper.readLines(file)
 	}
 
 }

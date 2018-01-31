@@ -5,6 +5,6 @@
     <title>Welcome to Grails</title>
 </head>
 <body>
-    flying!!!
+flying!!!
 </body>
 </html>
