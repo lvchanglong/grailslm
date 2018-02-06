@@ -86,6 +86,13 @@ class PlatformController {
             render status: INTERNAL_SERVER_ERROR
             return
         }
+
+        def activePlatform = Platform.getActive()//获得已开启平台
+        if(!activePlatform) {
+            activePlatform = Platform.mockActive()//虚拟一个
+        }
+        servletContext.platform = activePlatform
+
         render status: OK
     }
 

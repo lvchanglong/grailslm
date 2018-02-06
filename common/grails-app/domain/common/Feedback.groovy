@@ -18,7 +18,7 @@ class Feedback {
         version column: "version"
 
         username column:"username"
-        content column:"content", sqlType:"TEXT"
+        content column:"content", sqlType:"Text"
         type column:"type"
         ip column:"ip"
         dateCreated column:"date_created"

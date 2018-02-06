@@ -2,20 +2,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="${application.platform.layout}" />
+        <meta name="layout" content="main"/>
         <g:set var="offset" value="${params.offset?:0}"/>
         <g:set var="vip" value="${User.get(session.uid)}"/>
         <g:set var="parent" value="${MimeFile.get(params.pid)}"/>
     </head>
     <body>
-        <div class="container-fluid main-container">
+        <g:applyLayout name="${application.platform.layout}">
             <h1 class="main-title" style="text-align: center">
                 <g:if test="${parent}">
                     <g:link controller="mimeFile" action="index">文件管理</g:link>
                     <g:each in="${parent.listParents()}" status="i" var="location">
                         /<g:link controller="mimeFile" action="index" params="[pid: location.id]">
-                            ${location.filename}
-                        </g:link>
+                        ${location.filename}
+                    </g:link>
                     </g:each>
                 </g:if>
                 <g:else>
@@ -208,9 +208,9 @@
                                 <span class="glyphicon glyphicon-minus"></span>
                             </g:if>
                             <g:else>
-                                <g:link action="preview" id="${mimeFile.id}" params="[browser:'EX']" target="_blank"><span class="glyphicon glyphicon-fullscreen"></span></g:link>
+                                <g:link action="preview" id="${mimeFile.id}" params="[browser:'EX']" target="_blank"><span class="glyphicon glyphicon-fullscreen" title="预览（最大化）"></span></g:link>
                             </g:else>
-                            &nbsp;
+                        &nbsp;
                             <g:if test="${!vip.onlyView(params)}">
                                 <g:render template="download" model="[instance:mimeFile]"/>
                                 &nbsp;
@@ -233,6 +233,6 @@
                     <g:paginate total="${mimeFileCount ?: 0}" params="[pid:params.pid]"/>
                 </div>
             </div>
-        </div>
+        </g:applyLayout>
     </body>
 </html>

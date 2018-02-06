@@ -12,8 +12,8 @@ class Platform {
 
     String name //名称
     String state = "关闭" //状态（开启|关闭），同一时间最多只能开启1个平台
-    String layout = "main" //布局模板
-    String css = "application.css" //页面样式
+    String layout = "bases/Center" //布局模板
+    String css = "bases/sky.css" //页面样式
     Date dateCreated //创建时间
     Date lastUpdated //更新时间
 
@@ -24,8 +24,8 @@ class Platform {
 
         name column:"name"
         state column:"state"
-        layout column:"layout"
-        css column:"css"
+        layout column:"layout", sqlType: "VarChar(255)"
+        css column:"css", sqlType: "VarChar(255)"
         dateCreated column:"date_created"
         lastUpdated column:"last_updated"
 
@@ -40,8 +40,8 @@ class Platform {
     static constraints = {
         name(blank:false, nullable:false, unique: true)
         state(blank:false, nullable:false, inList: ["关闭", "开启"])
-        layout(blank:false, nullable:false, inList: ["main"])
-        css(blank:false, nullable:false, inList: ["application.css"])
+        layout(blank:false, nullable:false, inList: ["bases/Center", "bases/LeftRight"])
+        css(blank:false, nullable:false, inList: ["bases/default.css", "bases/sky.css"])
         data(nullable:true)
         filename(nullable:true)
     }

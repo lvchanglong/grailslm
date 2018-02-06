@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="${application.platform.layout}" />
+        <meta name="layout" content="main"/>
         <g:set var="offset" value="${params.offset?:0}"/>
         <g:set var="vip" value="${User.get(session.uid)}"/>
     </head>
     <body>
-        <div class="container-fluid main-container">
+        <g:applyLayout name="${application.platform.layout}">
             <h1 class="main-title" style="text-align: center">
                 平台管理
             </h1>
@@ -112,7 +112,7 @@
                         <td>${platform.layout}</td>
                         <td>${platform.css}</td>
                         <td>${platform.filename}</td>
-                        <td><img id="image" src="${createLink(controller:params.controller, action:'image', params:[id: platform.id])}" style="width:30px;height:30px;"/></td>
+                        <td><img id="image" src="${createLink(controller:params.controller, action:'image', params:[id: platform.id])}" style="width:30px;height:30px;" class="black-screen"/></td>
                         <td><g:formatDate format="yyyy-MM-dd" date="${platform.dateCreated}"/></td>
                         <td>
                             <g:if test="${!vip.onlyView(params)}">
@@ -133,6 +133,6 @@
                     <g:paginate total="${platformCount ?: 0}" />
                 </div>
             </div>
-        </div>
+        </g:applyLayout>
     </body>
 </html>

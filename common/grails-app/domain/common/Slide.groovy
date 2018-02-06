@@ -21,7 +21,7 @@ class Slide {
 
         title column:"title"
         url column:"url"
-        content column:"content", sqlType:"TEXT"
+        content column:"content", sqlType:"Text"
         data column:"data_id"
         filename column:"filename"
         dateCreated column:"date_created"

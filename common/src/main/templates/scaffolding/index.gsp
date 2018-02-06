@@ -2,12 +2,12 @@ ${'<%'}@ page import="common.User; common.${className};" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="\${application.platform.layout}" />
+        <meta name="layout" content="main"/>
         <g:set var="offset" value="\${params.offset?:0}"/>
         <g:set var="vip" value="\${User.get(session.uid)}"/>
     </head>
     <body>
-        <div class="container-fluid main-container">
+        <g:applyLayout name="${application.platform.layout}">
             <h1 class="main-title" style="text-align: center">
 
             </h1>
@@ -114,7 +114,7 @@ ${'<%'}@ page import="common.User; common.${className};" %>
                         <td><g:formatDate format="yyyy-MM-dd" date="\${${propertyName}.dateCreated}"/></td>
                         <td>
                             <g:render template="show" model="[instance:${propertyName}]"/>
-                            &nbsp;
+                        &nbsp;
                             <g:if test="\${!vip.onlyView(params)}">
                                 <g:render template="edit" model="[instance:${propertyName}]"/>
                                 &nbsp;
@@ -133,6 +133,6 @@ ${'<%'}@ page import="common.User; common.${className};" %>
                     <g:paginate total="\${${propertyName}Count ?: 0}" />
                 </div>
             </div>
-        </div>
+        </g:applyLayout>
     </body>
 </html>

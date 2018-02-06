@@ -11,7 +11,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <g:link uri="/" class="navbar-brand">${application.platform?.name}</g:link>
+
+            <g:set var="platform" value="${application.platform}"/>
+            <g:if test="${platform?.data}">
+                <g:link uri="/" class="navbar-brand-image">
+                    <img src="${createLink(controller:'platform', action:"image", params:["id": platform?.id])}"/>
+                </g:link>
+            </g:if>
+            <g:else>
+                <g:link uri="/" class="navbar-brand">
+                    ${platform?.name}
+                </g:link>
+            </g:else>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <g:if test="${vip}">

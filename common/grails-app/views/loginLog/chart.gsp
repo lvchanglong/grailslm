@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="${application.platform.layout}"/>
+		<meta name="layout" content="main"/>
 	</head>
 	<body>
-		<div class="container-fluid main-container">
-			<div class="row">
-				<div class="col-md-12">
-					<div id="canvasEx" style="width:100%;height:400px;"></div>
-				</div>
-				<div class="col-md-12">
-					<div id="instanceList" style="font-size:12px;margin-top:10px;" class="row"></div>
-				</div>
-			</div>
+        <g:applyLayout name="${application.platform.layout}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="canvasEx" style="width:100%;height:400px;"></div>
+                </div>
+                <div class="col-md-12">
+                    <div id="instanceList" style="font-size:12px;margin-top:10px;" class="row"></div>
+                </div>
+            </div>
 
-			<script>
+            <script>
                 jQuery(function () {
                     jQuery.getJSON("${createLink(controller:params.controller, action:'c1')}", function(json){
                         // 基于准备好的dom，初始化echarts实例
@@ -73,11 +73,11 @@
                                     normal: {
                                         barBorderRadius: 5,
                                         color: new echarts.graphic.LinearGradient(
-                                            0, 0, 0, 1,
-                                            [
-                                                {offset: 0, color: '#14c8d4'},
-                                                {offset: 1, color: '#43eec6'}
-                                            ]
+                                                0, 0, 0, 1,
+                                                [
+                                                    {offset: 0, color: '#14c8d4'},
+                                                    {offset: 1, color: '#43eec6'}
+                                                ]
                                         )
                                     }
                                 },
@@ -107,7 +107,7 @@
                         });
                     });
                 });
-			</script>
-		</div>
+            </script>
+        </g:applyLayout>
 	</body>
 </html>

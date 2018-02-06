@@ -10,6 +10,7 @@
         <meta name="Keywords" content="grails联盟,Grails联盟,GRAILS联盟"/>
         <meta name="Description" content="grails,grails教程,grails视频教程,网站开发,深思君"/>
 
+        <asset:stylesheet src="application.css"/>
         <asset:stylesheet src="${application.platform.css}"/>
 
         <!--[if lt IE 9]>
@@ -34,7 +35,6 @@
         <g:pageProperty name="page.header" default="${ render(template:"/layouts/headers/header") }"/>
         <g:layoutBody/>
         <g:pageProperty name="page.footer" default="${ render(template:"/layouts/footers/footer") }"/>
-
         <asset:image src="spinner.gif" id="spinner" style="position:fixed;left:15px;bottom:30px;display:none;"/>
     </body>
 </html>

@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="${application.platform.layout}" />
+        <meta name="layout" content="main"/>
         <g:set var="offset" value="${params.offset?:0}"/>
         <g:set var="vip" value="${User.get(session.uid)}"/>
     </head>
     <body>
-        <div class="container-fluid main-container">
+        <g:applyLayout name="${application.platform.layout}">
             <h1 class="main-title" style="text-align: center">
                 登录日志
             </h1>
@@ -135,6 +135,6 @@
                     <g:paginate total="${loginLogCount ?: 0}" />
                 </div>
             </div>
-        </div>
+        </g:applyLayout>
     </body>
 </html>

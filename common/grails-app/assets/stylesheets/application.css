@@ -53,72 +53,20 @@
     padding: 5px 15px;
     font-weight: bold;
 }
-
-
-
-.dashboard-header a {
-     font-weight:bold;
+.navbar-brand-image {
+    float: left;
+    height: 50px;
+    padding:5px;
 }
-.ie7 .navbar-form, .ie8 .navbar-form {
-    margin-top:9px;
-}
-.ie7 #cloud-demo, .ie8 #cloud-demo {
-    max-width:618px;
-}
-.ie7 #canvasEx, .ie8 #canvasEx {
-    max-width:1230px;
-}
-.ui-tooltip {
-    font-size:12px;
-}
-.ui-autocomplete {
-    z-index:99999;
-    font-size:14px;
-}
-html, body {
+.navbar-brand-image img {
     height:100%;
+    display:block;
 }
-.form-control {
-    margin-bottom:5px;
+.black-screen {
+    background-color: black;
 }
-.pagination {
-    background: #ABB3B9;
-}
-.pagination > a,
-.pagination > span {
-    display: inline-block;
-    background: transparent;
-    border: none;
-    border-left: 2px solid #e4e7ea;
-    color: #ffffff;
-    font-size: 14px;
-    line-height: 16px;
-    min-height: 41px;
-    min-height: inherit\9;
-    min-width: 41px;
-    outline: none;
-    padding: 12px 10px;
-    text-align: center;
-    -webkit-transition: 0.25s ease-out;
-    transition: 0.25s ease-out;
-}
-.pagination > a:hover,
-.pagination > span:hover,
-.pagination > a:focus,
-.pagination > span:focus {
-    background-color: #1abc9c;
-    color: #ffffff;
-}
-.pagination > a:active,
-.pagination > span:active {
-    background-color: #1abc9c;
-    color: #ffffff;
-}
-.pagination .currentStep {
-    background-color: #1abc9c;
-    color: #ffffff;
-    border-color: #dfe2e5;
-}
+
+/* slide */
 .carousel.slide {
     position:relative;
     height: 568px;
@@ -158,10 +106,81 @@ html, body {
     font-weight: normal;
     font-size: 48px;
 }
+.carousel-caption a {
+    color:white !important;
+}
 .carousel-caption .subheading {
     font-size: 18px;
     margin: 0 0 10px;
 }
+
+/* pagination */
+.pagination {
+    background: #ABB3B9;
+}
+.pagination > a,
+.pagination > span {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    border-left: 2px solid #e4e7ea;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 16px;
+    min-height: 41px;
+    min-height: inherit\9;
+    min-width: 41px;
+    outline: none;
+    padding: 12px 10px;
+    text-align: center;
+    -webkit-transition: 0.25s ease-out;
+    transition: 0.25s ease-out;
+}
+.pagination > a:hover,
+.pagination > span:hover,
+.pagination > a:focus,
+.pagination > span:focus {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+.pagination > a:active,
+.pagination > span:active {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+.pagination .currentStep {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border-color: #dfe2e5;
+}
+
+/* else */
+.dashboard-header a {
+     font-weight:bold;
+}
+.ie7 .navbar-form, .ie8 .navbar-form {
+    margin-top:9px;
+}
+.ie7 #cloud-demo, .ie8 #cloud-demo {
+    max-width:618px;
+}
+.ie7 #canvasEx, .ie8 #canvasEx {
+    max-width:1230px;
+}
+.ui-tooltip {
+    font-size:12px;
+}
+.ui-autocomplete {
+    z-index:99999;
+    font-size:14px;
+}
+html, body {
+    height:100%;
+}
+.form-control {
+    margin-bottom:5px;
+}
+
 .kReadonly {
     color:black !important;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>文档预览</title>
+        <title>文件预览</title>
         <style>
             html, body {
                 height:100%;
@@ -9,14 +9,14 @@
                 margin:0;
             }
             iframe {
-                width: 97% !important;
-                display:block;
+                width: 98% !important;
+                height: 98% !important;
                 margin: 0 auto;
-                height: 97% !important;
+                display:block;
             }
         </style>
     </head>
     <body>
-        <iframe src="${assetPath(src: "pdf/pdfjs-1.9.426-dist/web/viewer.html")}?file=${path}" width="100%" height="100%" />
+        <iframe src="${assetPath(src: "pdf/pdfjs-1.9.426-dist/web/viewer.html")}?file=${path}"/>
     </body>
 </html>

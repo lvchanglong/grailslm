@@ -19,7 +19,7 @@ class Role {
         version column: "version"
 
         name column:"name"
-        permission column:"permission", sqlType:"TEXT"
+        permission column:"permission", sqlType:"Text"
         dateCreated column:"date_created"
         lastUpdated column:"last_updated"
 
