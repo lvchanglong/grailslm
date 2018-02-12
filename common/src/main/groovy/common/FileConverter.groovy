@@ -1,5 +1,6 @@
 package common
 
+import com.aspose.cells.HtmlSaveOptions
 import com.aspose.cells.Workbook
 import com.aspose.slides.Presentation
 import com.aspose.slides.SaveFormat

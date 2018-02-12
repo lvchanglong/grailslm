@@ -4,7 +4,7 @@
         <meta name="layout" content="main"/>
 	</head>
 	<body>
-        <g:applyLayout name="${application.platform.layout}">
+        <g:applyLayout name="\${application.platform.layout}">
             <div class="row">
                 <div class="col-md-12">
                     <div id="canvasEx" style="width:100%;height:400px;"></div>

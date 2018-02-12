@@ -7,7 +7,7 @@ ${'<%'}@ page import="common.User; common.${className};" %>
         <g:set var="vip" value="\${User.get(session.uid)}"/>
     </head>
     <body>
-        <g:applyLayout name="${application.platform.layout}">
+        <g:applyLayout name="\${application.platform.layout}">
             <h1 class="main-title" style="text-align: center">
 
             </h1>

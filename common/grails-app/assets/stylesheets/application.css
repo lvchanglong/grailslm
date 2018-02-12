@@ -9,7 +9,6 @@
 *
 *= require mobile
 *= require bootstrap-3.3.7-dist/css/bootstrap
-*= require bootstrap-3.3.7-dist/css/bootstrap-theme
 *= require bootstrap-datetimepicker-4.17.47/build/css/bootstrap-datetimepicker.min
 *= require jquery-ui-1.12.1.Autocomplete/jquery-ui
 *= require messenger-1.5.0/build/css/messenger
@@ -30,12 +29,6 @@
 }
 .modal-fieldset {
     padding:20px 15px 0 15px;
-}
-.main-container {
-    position:relative;
-    padding: 80px 70px 20px 70px;
-    min-width: 300px;
-    min-height: 500px;
 }
 .main-title {
     font-size:30px;
@@ -112,6 +105,9 @@
 .carousel-caption .subheading {
     font-size: 18px;
     margin: 0 0 10px;
+}
+.carousel-control {
+    background-image: none !important;
 }
 
 /* pagination */

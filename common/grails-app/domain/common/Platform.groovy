@@ -13,7 +13,7 @@ class Platform {
     String name //名称
     String state = "关闭" //状态（开启|关闭），同一时间最多只能开启1个平台
     String layout = "bases/Center" //布局模板
-    String css = "bases/sky.css" //页面样式
+    String css = "bases/moon.css" //页面样式
     Date dateCreated //创建时间
     Date lastUpdated //更新时间
 
@@ -41,7 +41,7 @@ class Platform {
         name(blank:false, nullable:false, unique: true)
         state(blank:false, nullable:false, inList: ["关闭", "开启"])
         layout(blank:false, nullable:false, inList: ["bases/Center", "bases/LeftRight"])
-        css(blank:false, nullable:false, inList: ["bases/default.css", "bases/sky.css"])
+        css(blank:false, nullable:false, inList: ["bases/moon.css", "bases/sun.css"])
         data(nullable:true)
         filename(nullable:true)
     }

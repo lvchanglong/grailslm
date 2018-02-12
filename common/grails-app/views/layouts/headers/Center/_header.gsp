@@ -26,6 +26,32 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <g:if test="${vip}">
+                <g:if test="${vip.isSuperman()}">
+                    <g:set var="groups" value="${Function.listToGroup()}"/>
+                </g:if>
+                <g:elseif test="${vip.isAdmin()}">
+                    <g:set var="groups" value="${Platform.listActivePlatformFunctionsToGroup()}"/>
+                </g:elseif>
+                <g:else>
+                    <g:set var="groups" value="${vip.listFunctionsToGroup()}"/>
+                </g:else>
+
+                <ul class="nav navbar-nav">
+                    <g:each in="${groups}" status="j" var="hm">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${hm.getKey()} <b class="caret"></b></a>
+                            <span class="dropdown-arrow"></span>
+                            <ul class="dropdown-menu">
+                                <g:each in="${hm.getValue()}" status="i" var="function">
+                                    <g:if test="${function.getStateToBoolean() || vip.isSuperman()}">
+                                        <li><g:link controller="${function.controllerName}" action="${function.actionName}">${function.name}</g:link></li>
+                                    </g:if>
+                                </g:each>
+                            </ul>
+                        </li>
+                    </g:each>
+                </ul>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <g:render template="/layouts/demos/regenerate" model="[vip:vip]"/>

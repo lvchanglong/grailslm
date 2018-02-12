@@ -32,7 +32,7 @@ class SearchLog {
     static constraints = {
         platform(blank:false, nullable:false, inList: ["网站", "客户端"])
         type(blank:true, nullable:true)
-        q(blank:false, nullable:false)
+        q(blank:true, nullable:true)
         cnt(blank:true, nullable:true)
         ip(blank:true, nullable:true)
     }

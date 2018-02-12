@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenLocal()
-		//maven { url "http://10.2.10.250:8081/nexus/content/groups/public/" }
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
@@ -27,7 +26,6 @@ apply plugin:"org.grails.grails-gsp"
 
 repositories {
     mavenLocal()
-	//maven { url "http://10.2.10.250:8081/nexus/content/groups/public/" }
     maven { url "https://repo.grails.org/grails/core" }
 }
 
@@ -72,6 +70,7 @@ dependencies {
     compile "org.apache.pdfbox:pdfbox:2.0.6"
     compile "org.apache.commons:commons-csv:1.4"
     compile "org.apache.solr:solr-solrj:5.5.0"
+    compile "org.jsoup:jsoup:1.11.2"
 
     compile "org.apache.httpcomponents:httpclient:4.5.4"
     compile "org.apache.httpcomponents:httpmime:4.5.3"

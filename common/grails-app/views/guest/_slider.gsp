@@ -1,5 +1,11 @@
 <%@ page import="common.Slide" %>
 
+<style>
+    .layout-center {
+        padding:50px 0 20px 0 !important;
+    }
+</style>
+
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <g:set var="slides" value="${Slide.list()}"/>
 

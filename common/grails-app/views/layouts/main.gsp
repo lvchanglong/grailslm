@@ -32,9 +32,9 @@
         <g:layoutHead/>
     </head>
     <body onload="${pageProperty(name:"body.onload")}" class="${pageProperty(name:"body.class")}">
-        <g:pageProperty name="page.header" default="${ render(template:"/layouts/headers/header") }"/>
+        <g:pageProperty name="page.header" default="${ render(template:"/layouts/headers/Center/header") }"/>
         <g:layoutBody/>
-        <g:pageProperty name="page.footer" default="${ render(template:"/layouts/footers/footer") }"/>
+        <g:pageProperty name="page.footer" default="${ render(template:"/layouts/footers/Center/footer") }"/>
         <asset:image src="spinner.gif" id="spinner" style="position:fixed;left:15px;bottom:30px;display:none;"/>
     </body>
 </html>
