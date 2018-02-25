@@ -20,6 +20,7 @@
                             <th>文件名称</th>
                             <th>类型</th>
                             <th>密级</th>
+                            <th>备注</th>
                             <th>创建时间</th>
                         </tr>
                         <g:each in="${mimeFileList}" status="i" var="mimeFile">
@@ -34,13 +35,14 @@
                                 </td>
                                 <td>${mimeFile.type}</td>
                                 <td>${mimeFile.classification}</td>
+                                <td><pre>${mimeFile.remark}</pre></td>
                                 <td><g:formatDate format="yyyy-MM-dd" date="${mimeFile.dateCreated}"/></td>
                             </tr>
                         </g:each>
                     </table>
                     <div style="text-align: center;">
                         <div class="pagination">
-                            <g:paginate total="${mimeFileCount ?: 0}"/>
+                            <g:paginate total="${mimeFileCount ?: 0}" params="[q:params.q]"/>
                         </div>
                     </div>
                 </g:if>

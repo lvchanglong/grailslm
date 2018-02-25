@@ -14,8 +14,8 @@
                     <g:link controller="mimeFile" action="index">文件管理</g:link>
                     <g:each in="${parent.listParents()}" status="i" var="location">
                         /<g:link controller="mimeFile" action="index" params="[pid: location.id]">
-                        ${location.filename}
-                    </g:link>
+                            ${location.filename}
+                        </g:link>
                     </g:each>
                 </g:if>
                 <g:else>
@@ -181,6 +181,7 @@
                     <th>文件名称</th>
                     <th>类型</th>
                     <th>密级</th>
+                    <th>备注</th>
                     <g:sortableColumn property="dateCreated" title="创建时间"/>
                     <th>操作</th>
                 </tr>
@@ -202,6 +203,7 @@
                         </td>
                         <td>${mimeFile.type}</td>
                         <td>${mimeFile.classification}</td>
+                        <td><pre>${mimeFile.remark}</pre></td>
                         <td><g:formatDate format="yyyy-MM-dd" date="${mimeFile.dateCreated}"/></td>
                         <td>
                             <g:if test="${mimeFile.isDir()}">

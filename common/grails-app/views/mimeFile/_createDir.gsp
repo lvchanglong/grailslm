@@ -32,6 +32,13 @@
                                 <g:select from="${MimeFile.constrainedProperties.classification.inList}" name="classification" value="${instance.classification}" valueMessagePrefix="mimeFile.classification" class="form-control"/>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="remark" class="col-sm-2">备注
+                            </label>
+                            <div class="col-sm-10">
+                                <g:textArea name="remark" value="暂无" class="form-control"/>
+                            </div>
+                        </div>
                     </fieldset>
                 </div>
                 <div class="modal-footer">

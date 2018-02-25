@@ -25,11 +25,24 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="file" class="col-sm-2">上传
-                                <span class="required-indicator">*</span>
+                            <label for="file" class="col-sm-2">-上传
                             </label>
                             <div class="col-sm-10">
-                                <input type="file" id="file" name="file" value="" class="form-control"/>
+                                <input type="file" id="file" name="file" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="filename" class="col-sm-2">-非上传
+                            </label>
+                            <div class="col-sm-10">
+                                <g:textField name="filename" value="" placeholder="文件名称" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="remark" class="col-sm-2">备注
+                            </label>
+                            <div class="col-sm-10">
+                                <g:textArea name="remark" value="暂无" class="form-control"/>
                             </div>
                         </div>
                     </fieldset>

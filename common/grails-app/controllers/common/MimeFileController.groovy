@@ -12,6 +12,7 @@ class MimeFileController {
         params.max = Math.min(max ?: 10, 100)
 
         def query = MimeFile.where {
+            classification == "公开" ||
             creater {
                 id == session.uid
             }
@@ -290,7 +291,7 @@ class MimeFileController {
             render(view: "preview${params.browser?:""}", model: [path: "/static/${keyPath}/${targetFile.getName()}"])
             return
         }
-        redirect(uri:"/static/${keyPath}/${serverFileName}")
+        redirect(uri:"/static/${keyPath}/${serverFileName}") //处理未支持格式
     }
 
 }
