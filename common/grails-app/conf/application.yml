@@ -116,14 +116,14 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: com.mysql.jdbc.Driver
-    username: 'tkrobot'
-    password: 'tkrobot'
+    username: 'root'
+    password: '123456'
 
 environments:
     development:
         dataSource:
             dbCreate: update
-            url: jdbc:mysql://10.2.16.36:3306/common?autoReconnect=true&characterEncoding=utf-8&useUnicode=true
+            url: jdbc:mysql://127.0.0.1:3306/grailslm?autoReconnect=true&characterEncoding=utf-8&useUnicode=true
     test:
         dataSource:
             dbCreate: update
