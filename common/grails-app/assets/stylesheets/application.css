@@ -83,6 +83,7 @@
     right: 0;
     top: 0;
     max-width: 526px;
+    max-height: 370px;
     -webkit-animation: banner-slide 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     -moz-animation: banner-slide 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     -o-animation: banner-slide 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
